@@ -3,10 +3,20 @@ import logging
 import pandas as pd
 
 def replaceAll(df):
-    """ replace all percentage with newly calculated value FG%, 3P% and FT%
-        PARAMETERS:
-            df: dataframe of the dataset
+    """Recalculate Percentage:
+    Replace all percentage with newly calculated value FG%, 3P% and FT%
+
+    Parameters
+    ----------
+    df : dataframe
+        Features of dataset
+
+    Returns
+    -------
+    df : dataframe
+        Features of dataset with recalculated percentage features
     """
+    
     logger = logging.getLogger(__name__)
     logger.info('replace all percentage with newly calculated value FG%, 3P% and FT%')
 
