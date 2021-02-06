@@ -26,5 +26,3 @@ def cv(classifier, X, y):
     print("Avg ROC AUC score of valuation set is: "+str(roc_val_avg))
 
     return roc_training_avg, roc_val_avg
-        
-
