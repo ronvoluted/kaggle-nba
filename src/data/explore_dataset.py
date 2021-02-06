@@ -3,7 +3,17 @@ import logging
 import pandas as pd
 
 def explore(filename):
-    """ Load the raw data and print out information and dataframe
+    """Explore data:
+    This module loads the csv file with pandas and print out the standard dataframe information.
+    
+    Parameters
+    ----------
+    filename : str
+        The filename of the target file to be explored.
+
+    Returns
+    -------
+    
     """
 
     logger = logging.getLogger(__name__)
@@ -21,13 +31,3 @@ def explore(filename):
         print(df['TARGET_5Yrs'].value_counts(), end="\n")
     print("=== dataframe describe ===")
     print(df.describe(include='all'), end="\n")
-    
-
-
-
-
-if __name__ == '__explore__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
-
-    explore()

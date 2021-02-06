@@ -4,6 +4,29 @@ from src.features import minMaxScaling
 from src.models import eval_model
 
 def cv(classifier, X, y):
+    """Cross Validatioin Module:
+        This module splits complete dataset into 5 stratified folds, and do below steps
+        1. Preprocessing - Standardization based on sub-training set
+        2. Loop through 5 folds to perform Model Evaluation, and record all 5 times ROC AUC Score
+        3. Average all 5 times ROC AUC Score, and return for comparison
+
+    Parameters
+    ----------
+    classifier : sklearn classifier
+        classifier to be evaluated
+    X : dataframe or array
+        Features of complete training set
+    y : dataframe or array
+        Target value of complete training set
+
+    Returns
+    -------
+    roc_training_avg
+        Average ROC AUC score of sub-training set
+    roc_val_avg
+        Average ROC AUC score of sub-val set
+    """
+
     n = 5
     skf = StratifiedKFold(n_splits = n)
     roc_training = np.array([])
