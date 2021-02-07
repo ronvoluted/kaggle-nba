@@ -6,7 +6,7 @@ from sklearn.utils import resample
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
-def smote(X,y,strategy=0.4):
+def smote(X,y,strategy=0.2):
     """SMOTE:
     To tackle imbalanced data, this function helps creating synthetic samples from minority.
     
