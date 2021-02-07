@@ -80,7 +80,7 @@ def get_performance(mod, xvar, yvar, runtype, show):
   mod_roc_score = roc_auc_score(yvar, mod_pred_proba)
   
   if show:
-    print('Accuracy Score: ',accuracy_score(yvar,mod_pred),' F1 Score ',f1_score(yvar,mod_pred),' Recall Score ', recall_score(yvar,mod_pred), ' R2 Score ',mod.score(xvar, yvar),' ROC_AUC_SCORE ', mod_roc_score,'(',runtype,')')
+    print('Accuracy Score: ',accuracy_score(yvar,mod_pred),' F1 Score ',f1_score(yvar,mod_pred),' Precision Score ', precision_score(yvar,mod_pred),' Recall Score ', recall_score(yvar,mod_pred), ' R2 Score ',mod.score(xvar, yvar),' ROC_AUC_SCORE ', mod_roc_score,'(',runtype,')')
     disp = plot_confusion_matrix(mod, xvar, yvar, cmap=plt.cm.Blues)
     disp.ax_.set_title('Confusion matrix '+runtype)
   
