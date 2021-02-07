@@ -6,18 +6,25 @@ Team repository for the [NBA Career Prediction Kaggle Competition](https://www.k
 - Ron Au
 
 ## Docker
-1. Build the image:
+### Build image:
 
 ```bash
 docker build -t kaggle-nba .
 ```
 
-2a. Run the image container on Windows:
+### Run image container
+
+#### Windows (cmd):
 ```cmd
 docker run -itp 8888:8888 -v %cd%:/home/kaggle --name all-star kaggle-nba
 ```
 
-2b. Run the image container on Mac/Linux:
+#### Windows (Powershell):
+```cmd
+docker run -itp 8888:8888 -v ${PWD}:/home/kaggle --name all-star kaggle-nba
+```
+
+#### Mac/Linux:
 ```bash
 docker run -itp 8888:8888 -v "$PWD":/home/kaggle --name all-star kaggle-nba
 ```
