@@ -4,9 +4,22 @@ import pandas as pd
 import joblib
 
 def abs(df, name):
-    """ Convert all value in dataframe to be absolute value, 
-        and store the dataframe into ../data/processed/abs_<name>
+    """Convert the dataframe value to absolute:
+    ***WARNING*** This module converts all negative values to positive values in dataframe.
+    
+    Parameters
+    ----------
+    df : dataframe
+        Features of dataset
+    name: string
+        The name of the dataset, and it will be used as the filename of data dump
+
+    Returns
+    -------
+    df : dataframe
+        Converted dataframe with all values in absolute
     """
+
     logger = logging.getLogger(__name__)
     logger.info('turning dataframe '+name+ ' to be absolute value')
 
