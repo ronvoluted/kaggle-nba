@@ -29,7 +29,7 @@ def smote(X,y,strategy=0.2):
     # for reproducibility
     seed = 100
     # SMOTE number of neighbors
-    k = 5
+    k = 2
     sm = SMOTE(sampling_strategy=strategy, k_neighbors=k, random_state=seed)
     X,y = sm.fit_resample(X,y)
     return X,y
@@ -60,7 +60,7 @@ def random_under(X,y,strategy=0.5):
     return X,y
 
 
-def oversample(df):
+def oversample(df, target):
     """Oversampling:
     To tackle imbalanced data, this function helps upsampling the minority.
     
@@ -68,6 +68,8 @@ def oversample(df):
     ----------
     df : dataframe
         All dataset (including features and target value)
+    target: string
+        The column name of the TARGET
 
     Returns
     -------
@@ -78,9 +80,9 @@ def oversample(df):
     logger = logging.getLogger(__name__)
     logger.info('Oversample the dataset to handle imbalanced data')
 
-    df_1 = df.loc[df['TARGET_5Yrs']==1]
+    df_1 = df.loc[df[target]==1]
     df_1_len = len(df_1.index)
-    df_0 = df.loc[df['TARGET_5Yrs']==0]
+    df_0 = df.loc[df[target]==0]
     df_0_len = len(df_0.index)
 
     if ( df_1_len > df_0_len ):
