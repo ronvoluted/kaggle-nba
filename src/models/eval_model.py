@@ -1,8 +1,33 @@
 from sklearn.metrics import accuracy_score, confusion_matrix,roc_curve, roc_auc_score, precision_score, recall_score, precision_recall_curve, f1_score, plot_confusion_matrix
+from sklearn.model_selection import train_test_split
 from sklearn.base import is_regressor
 import numpy as np
 import matplotlib.pyplot as plt
 from IPython.core.display import display, HTML
+
+def eval_model_with_df(classifier, df, show=True):
+  """Evaluate Model with DataFrame:
+    This module extract TARGET value, and then split the dataset into training and validation set.
+    Then calling eval_model to get all performance metrics, then returned the trained model
+
+    Parameters
+    ----------
+    classifier : sklearn classifier
+        classifier to be evaluated
+    df : dataframe
+        Features of training and validation set including TARGET value
+    show : boolean
+        If metric should be shown or not
+
+    Returns
+    -------
+    model
+        Trained model based on classifier and training set data
+  """
+  y = df.pop('TARGET')
+  X_train, X_val, y_train, y_val = train_test_split(df,y,test_size=0.2, random_state=8)
+  model, roc_score_training, roc_score_val = eval_model(classifier, X_train, y_train, X_val, y_val, show)
+  return model
 
 def eval_model(classifier, X_train, y_train, X_val, y_val, show=True):
   """Evaluate Model:
