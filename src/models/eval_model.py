@@ -1,5 +1,6 @@
 from sklearn.metrics import accuracy_score, confusion_matrix,roc_curve, roc_auc_score, precision_score, recall_score, precision_recall_curve, f1_score, plot_confusion_matrix
 from sklearn.base import is_regressor
+from sklearn.model_selection import cross_val_predict
 import numpy as np
 import matplotlib.pyplot as plt
 from IPython.core.display import display, HTML
@@ -86,11 +87,13 @@ def get_performance(mod, xvar, yvar, runtype, show):
 
   if is_regressor(mod):
     convert_ratio = np.vectorize(lambda x: 1 if x > 0.5 else 0)
-    mod_pred_proba = mod.predict(xvar)
+    #mod_pred_proba = mod.predict(xvar)
+    mod_pred_proba = cross_val_predict(mod, xvar, yvar, cv=10, method='predict_proba')
     mod_pred = convert_ratio(mod_pred_proba)
   else:
     mod_pred = mod.predict(xvar)
-    mod_pred_proba = mod.predict_proba(xvar)[:, 1]
+    #mod_pred_proba = mod.predict_proba(xvar)[:, 1]
+    mod_pred_proba = cross_val_predict(mod, xvar, yvar.values.ravel(), cv=10, method='predict_proba')[:, 1]
 
   mod_roc_score = roc_auc_score(yvar, mod_pred_proba)
 
