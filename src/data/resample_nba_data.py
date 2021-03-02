@@ -3,12 +3,20 @@ from sklearn.utils import resample
 import pandas as pd
 def resample_nba_data(df):
     """
-    Imports the file and splits it into Train, Valdiation and Test set.
-    It returns all splits.
+    
+    This module is specific to the  Kaggle NBA Competition set up for the Adv Data Science class.
+    
+    Upscaling and Downscaling performed on the dataframe.
+    
+    Takes dataframe as input, based on the majority and minority Target Class, 
+    the function will upscale the data and downscale the data and return two dataframes. 
+    
+    It returns two dataframes.
     
     Parameters
     ----------
-    file : input csv file with the path
+    df : dataframe
+    
     """
     
     df_majority = df[df['TARGET_5Yrs']==1]

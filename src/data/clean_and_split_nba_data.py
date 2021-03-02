@@ -1,13 +1,24 @@
 from sklearn.model_selection import train_test_split
-from data import split_data as split
 def clean_and_split_nba_data(df,inverse=False):
     """
-    Imports the file and splits it into Train, Valdiation and Test set.
+    
+    This module is specific to the  Kaggle NBA Competition set up for the Adv Data Science class.
+    
+    Imports the dataframe and splits it into Train, Valdiation and Test set.
+    
+    Performs the follwoing data clean up activities
+        check if any column value is less than zero then set the values to zero
+        check if "made" columns is greater than "attempt" then set all three columns "made", "attempt" and "percentage" values to zero
+        check if "made" columns is greater than zero then re-calculate the percentage column 
+        
     It returns all splits.
     
     Parameters
     ----------
-    file : input csv file with the path
+    df : dataframe of the raw data
+    
+    inverse: Flag to inverse the true class in the Target column [DEFAULT=False]
+    
     """
     
     df_cleaned = df.copy()
