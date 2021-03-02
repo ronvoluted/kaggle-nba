@@ -105,7 +105,7 @@ def engineer(df, target, features, predicting=False):
     
     # Add RON per Possessions
     if features['add_RONP']:
-        df['RONM'] = (fieldGoalsPerPossession + threePointsersPerPossession) * df['FTA'] * assistsPerPossession * turnoversPerPossession
+        df['RONP'] = (fieldGoalsPerPossession + threePointsersPerPossession) * df['FTA'] * assistsPerPossession * turnoversPerPossession
 
     # Remove Points per Game column
     if features['rem_PTS']:
