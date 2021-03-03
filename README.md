@@ -5,7 +5,18 @@ Team repository for the [NBA Career Prediction Kaggle Competition](https://www.k
 - Sampath Pitchandi
 - Ron Au
 
-## Docker
+## Option A) Run with pipenv
+### Install dependencies
+```bash
+pipenv install
+```
+### Run Jupyter Lab
+```bash
+pipenv run jupyter lab
+```
+
+
+## Option B) Run with Docker
 ### Build image:
 
 ```bash
